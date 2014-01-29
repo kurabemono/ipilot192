@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$username = $_POST["username"];
 	$password = SHA1($_POST["password"]);
 	
@@ -7,7 +8,7 @@
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 	
-	$query = "SELECT * FROM users WHERE username = \"" . $username . "\" AND password = \"" . $password . "\"";
+	$query = "SELECT username, password FROM users WHERE username = \"" . $username . "\" AND password = \"" . $password . "\"";
 	if ($stmt = mysqli_prepare($con, $query)) {
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_store_result($stmt);
@@ -15,10 +16,9 @@
 			echo "login success";
 		}
 		else {
-			$expire=time()+60*60*24*30;
-			setcookie("badlogin", "1", $expire);
+			$_SESSION['badlogin'] = 1;
 		}
-		mysqli_stmt_bind_result($stmt, $uid, $uname, $pass, $fullname, $mobile, $email, $address, $work, $wposition, $wstart, $waddress);
+		mysqli_stmt_bind_result($stmt, $uname, $pass);
 		mysqli_stmt_fetch($stmt);
 		$expire=time()+60*60*24*30;
 		setcookie("user", $uname, $expire);

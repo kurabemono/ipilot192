@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -21,6 +22,7 @@
   <?php
 	include 'globals.php';
 	headerbuttons();
+	
   ?>
 
   <!-- End Nav -->
@@ -32,6 +34,26 @@
 
     <!-- Main Blog Content -->
     <div class="large-9 columns">
+	<?php
+		if (isset($_COOKIE['user'])) {
+			$username = $_COOKIE['user'];
+			$con = mysqli_connect("localhost","root", "","ipilot");
+			if (mysqli_connect_errno($con)) {
+				echo "Failed to connect to MySQL: " . mysqli_connect_error();
+			}
+			$query = "SELECT * FROM users WHERE username = \"" . $username . "\"";
+			if ($stmt = mysqli_prepare($con, $query)) {
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_bind_result($stmt, $uid, $uname, $password, $fullname, $studentno, $batch, $mobilenumber, $email, $address, $work, $wposition, $wstarted, $waddress);
+				mysqli_stmt_fetch($stmt);
+			}
+		}
+		else {
+			$_SESSION['loginrequired'] = 1;
+			$url = "index.php";
+			echo "<script type=\"text/javascript\">document.location.href=\"" . $url . "\";</script>";
+		}
+	?>
 	  <fieldset>
 		<legend>Basic Info</legend>
 		<div class="row">
@@ -39,7 +61,7 @@
 					<label class="right inline">Name</label>
 				</div>
 				<div class="large-4 columns">
-					<h5>Juan Dela Cruz</h5>
+					<h5><?php echo $fullname; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -49,7 +71,7 @@
 					<label class="right inline">Student #</label>
 				</div>
 				<div class="large-4 columns">
-					<h5>2006-93485</h5>
+					<h5><?php echo $studentno; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -59,7 +81,7 @@
 					<label class="right inline">Batch</label>
 				</div>
 				<div class="large-4 columns">
-					<h5>2009</h5>
+					<h5><?php echo $batch; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -69,7 +91,7 @@
 					<label class="right inline">Mobile #</label>
 				</div>
 				<div class="large-4 columns">
-					<h5>0918 123 4567</h5>
+					<h5><?php echo $mobilenumber; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -79,7 +101,7 @@
 					<label class="right inline">Email Address</label>
 				</div>
 				<div class="large-4 columns">
-					<h5>juandelacruz@jdcruz.com</h5>
+					<h5><?php echo $email; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -89,7 +111,7 @@
 					<label class="right inline">Address</label>
 				</div>
 				<div class="large-10 columns">
-					<h5>Diliman, Quezon City</h5>
+					<h5><?php echo $address; ?></h5>
 				</div>
 		</div>
 	  </fieldset>
@@ -101,7 +123,7 @@
 					<label class="right inline">Company Name</label>
 				</div>
 				<div class="large-4 columns">
-					<h5>Microsoft</h5>
+					<h5><?php echo $work; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -111,7 +133,7 @@
 					<label class="right inline">Position</label>
 				</div>
 				<div class="large-4 columns">
-					<h5>Cleaning</h5>
+					<h5><?php echo $wposition; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -121,7 +143,7 @@
 					<label class="right inline">Employee since</label>
 				</div>
 				<div class="large-4 columns">
-					<h5>2010</h5>
+					<h5><?php echo $wstarted; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -131,7 +153,7 @@
 					<label class="right inline">Company Address</label>
 				</div>
 				<div class="large-10 columns">
-					<h5>One Microsoft Way, Redmond, WA 98052-7329, USA</h5>
+					<h5><?php echo $waddress; ?></h5>
 				</div>
 		</div>
 	  </fieldset>

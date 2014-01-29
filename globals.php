@@ -47,10 +47,10 @@ function profile() {
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 	
-		$query = "SELECT * FROM users WHERE username = \"" . $username . "\"";
+		$query = "SELECT username, fullname FROM users WHERE username = \"" . $username . "\"";
 		if ($stmt = mysqli_prepare($con, $query)) {
 			mysqli_stmt_execute($stmt);
-			mysqli_stmt_bind_result($stmt, $uid, $uname, $pass, $fullname, $mobile, $email, $address, $work, $wposition, $wstart, $waddress);
+			mysqli_stmt_bind_result($stmt, $uname, $fullname);
 			mysqli_stmt_fetch($stmt);
 		}
 		echo "<div align=\"center\">
@@ -67,14 +67,28 @@ function profile() {
 		echo "<div class=\"panel\"><form action=\"authenticate.php\" method=\"post\">
 		<div class=\"row\">";
 		
-		if (isset($_COOKIE["badlogin"])) {
-			if ($_COOKIE["badlogin"] == "1") {
-				echo "<div data-alert class=\"alert-box alert\">
-				  Invalid username/password
-				  <a href=\"#\" class=\"close\">&times;</a>
-				</div>";
-			}
-			setcookie("badlogin", "", time() - 3600);
+		if (isset($_SESSION['badlogin'])) {
+			echo "<div data-alert class=\"alert-box alert\">
+			  Invalid username/password
+			  <a href=\"#\" class=\"close\">&times;</a>
+			</div>";
+			unset($_SESSION['badlogin']);
+		}
+		
+		if (isset($_SESSION['loginrequired'])) {
+			echo "<div data-alert class=\"alert-box alert\">
+			  Please login first
+			  <a href=\"#\" class=\"close\">&times;</a>
+			</div>";
+			unset($_SESSION['loginrequired']);
+		}
+		
+		if (isset($_SESSION['logoutsuccess'])) {
+			echo "<div data-alert class=\"alert-box success\">
+			  Successfully logged out
+			  <a href=\"#\" class=\"close\">&times;</a>
+			</div>";
+			unset($_SESSION['logoutsuccess']);
 		}
 		
 		echo "<div class=\"large-12 columns\">

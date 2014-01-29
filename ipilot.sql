@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 29, 2014 at 04:09 AM
+-- Generation Time: Jan 29, 2014 at 10:36 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.16
 
@@ -81,6 +81,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(20) NOT NULL,
   `password` varchar(40) NOT NULL,
   `fullname` varchar(256) NOT NULL,
+  `studentnumber` varchar(12) DEFAULT NULL,
+  `batch` int(11) DEFAULT NULL,
   `mobilenumber` varchar(20) DEFAULT NULL,
   `email` varchar(64) DEFAULT NULL,
   `address` varchar(256) DEFAULT NULL,
@@ -96,8 +98,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userid`, `username`, `password`, `fullname`, `mobilenumber`, `email`, `address`, `work`, `position`, `startedworking`, `workaddress`) VALUES
-(1, 'dion', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Dion Melosantos', '09173611773', 'dpmelosantos@gmail.com', 'Hoyu-ryo 1-483 Takizawa, Hachioji-shi, Tokyo', 'UP', 'CNN', 2013, 'Diliman QC');
+INSERT INTO `users` (`userid`, `username`, `password`, `fullname`, `studentnumber`, `batch`, `mobilenumber`, `email`, `address`, `work`, `position`, `startedworking`, `workaddress`) VALUES
+(1, 'dion', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Dion Melosantos', '2010-04217', 2015, '09173611773', 'dpmelosantos@gmail.com', 'Hoyu-ryo 1-483 Takizawa, Hachioji-shi, Tokyo', 'UP', 'CNN', 2013, 'Diliman QC');
 
 -- --------------------------------------------------------
 
