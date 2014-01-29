@@ -11,7 +11,7 @@ function headerbuttons() {
 			 <li><a href=\"donate.php\" class=\"button\">Donate</a></li>
 			</ul>
 		  </div>
-		  <h1>iPilot <small>beta</small></h1>
+		  <h1>iPilot <small>beta 192</small></h1>
 		  <hr />
 		</div>
 	  </div>";
@@ -23,7 +23,7 @@ function footerlinks() {
       <hr />
       <div class=\"row\">
         <div class=\"large-6 columns\">
-          <p>&copy; Copyright 2013 iPilot. Template by ZURB</p>
+          <p>&copy; Copyright 2014 iPilot. Template by ZURB</p>
         </div>
         <div class=\"large-6 columns\">
           <ul class=\"inline-list right\">
@@ -50,11 +50,11 @@ function profile() {
 		$query = "SELECT * FROM users WHERE username = \"" . $username . "\"";
 		if ($stmt = mysqli_prepare($con, $query)) {
 			mysqli_stmt_execute($stmt);
-			mysqli_stmt_bind_result($stmt, $col1, $col2, $fullname);
+			mysqli_stmt_bind_result($stmt, $uid, $uname, $pass, $fullname, $mobile, $email, $address, $work, $wposition, $wstart, $waddress);
 			mysqli_stmt_fetch($stmt);
 		}
 		echo "<div align=\"center\">
-	    <img src=\"http://placehold.it/150x150&text=" . $col1 . "\" /><br>
+	    <img src=\"http://placehold.it/150x150&text=" . $uname . "\" /><br>
 		<b><a href=\"#\" align=\"right\">" . $fullname ."</a></b>
       </div>
 	  
@@ -64,7 +64,7 @@ function profile() {
       </ul>";
 	}
 	else {
-		echo "<div class=\"panel\"><form action=\"login.php\" method=\"post\">
+		echo "<div class=\"panel\"><form action=\"authenticate.php\" method=\"post\">
 		<div class=\"row\">";
 		
 		if (isset($_COOKIE["badlogin"])) {
@@ -86,7 +86,7 @@ function profile() {
 				<input type=\"password\" name=\"password\" placeholder=\"Password\" />
 			</div>
 		</div>
-		<input type=\"submit\" class=\"small button\">
+		<input type=\"submit\" value=\"Login\" class=\"small button\">
 		</div>
 		</form>";
 	}
