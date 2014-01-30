@@ -4,25 +4,24 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>iPilot Prototype</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>iPilot Prototype</title>
 
-  <!-- If you are using CSS version, only link these 2 files, you may add app.css to use for your overrides if you like. -->
-  <link rel="stylesheet" href="css/normalize.css" />
-  <link rel="stylesheet" href="css/foundation.css" />
+	<!-- If you are using CSS version, only link these 2 files, you may add app.css to use for your overrides if you like. -->
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/foundation.css" />
 
-  <script src="js/vendor/custom.modernizr.js"></script>
+	<script src="js/vendor/custom.modernizr.js"></script>
 
 </head>
 
 <body>
 <!-- Nav Bar -->
 
-  <?php
-	include 'globals.php';
-	headerbuttons();
-  ?>
+	<?php
+		include 'nav/header.php';
+	?>
 
   <!-- End Nav -->
 
@@ -41,7 +40,7 @@
 			<label>Name</label>
 			<div class="row">
 				<div class="large-4 columns">
-					<input type="text" placeholder="Given Name" />
+					<input type="text" placeholder="Given Name" value="asdf"/>
 				</div>
 				<div class="large-4 columns">
 					<input type="text" placeholder="Middle Name" />
@@ -125,17 +124,16 @@
 
     <aside class="large-3 columns">
 	
-	  <?php
-		profile();
-	  ?>
+		<?php
+			include 'nav/sidebar_miniprofile.php';
+		?>
 
       <div class="panel">
         <h5>2013 Sept. Top Donors</h5>
         <ol>
-		  <li><b>Joshua Nidea</b><br>P50,000</li>
-		  <li><b>Joshua Martin Villano</b><br>P30,000</li>
-		  <li><b>Dion Melosantos</b><br>P15,000</li>
-
+			<li><b>Joshua Nidea</b><br>P50,000</li>
+			<li><b>Joshua Martin Villano</b><br>P30,000</li>
+			<li><b>Dion Melosantos</b><br>P15,000</li>
 		</ol>
         <a href="#">More &rarr;</a>
       </div>
@@ -151,7 +149,7 @@
   <!-- Footer -->
 
   <?php
-	footerlinks();
+	include 'nav/footer.php';
   ?>
 
   <script>
@@ -174,7 +172,7 @@
   <script src="js/foundation/foundation.tooltips.js"></script>
   <script src="js/foundation/foundation.topbar.js"></script>
   <script src="js/foundation/foundation.interchange.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
+	<script>
+		$(document).foundation();
+	</script>
 </body>

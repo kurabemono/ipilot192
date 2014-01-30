@@ -20,8 +20,7 @@
 <!-- Nav Bar -->
 
   <?php
-	include 'globals.php';
-	headerbuttons();
+	include 'nav/header.php';
   ?>
 
   <!-- End Nav -->
@@ -56,7 +55,7 @@
     <aside class="large-3 columns">
 	
 	  <?php
-		profile();
+		include 'nav/sidebar_miniprofile.php';
 	  ?>
 
       <div class="panel">
@@ -81,7 +80,7 @@
   <!-- Footer -->
 
   <?php
-	footerlinks();
+	include 'nav/footer.php';
   ?>
 
   <script>
