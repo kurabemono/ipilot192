@@ -1325,7 +1325,7 @@ button, .button {
   font-family: inherit;
   font-weight: bold;
   line-height: normal;
-  margin: 0 0 1.25em;
+  margin: 10px 0px 10px 0px;
   position: relative;
   text-decoration: none;
   text-align: center;
