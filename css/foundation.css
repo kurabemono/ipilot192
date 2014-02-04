@@ -22,7 +22,7 @@ body {
   font-size: 100%; }
 
 body {
-  background: white;
+  background-image: url('/ipilot192/img/wood.jpg');
   color: #222222;
   padding: 0;
   margin: 0;
@@ -1772,7 +1772,7 @@ fieldset {
   margin: 1.125em 0; }
   fieldset legend {
     font-weight: bold;
-    background: white;
+    background: rgba(0,0,0,0);
     padding: 0 0.1875em;
     margin: 0;
     margin-left: -0.1875em; }
@@ -4163,10 +4163,10 @@ ul.pagination {
 .panel {
   border-style: solid;
   border-width: 1px;
-  border-color: #d9d9d9;
+  border-color: rgba(0, 0, 0, 0);
   margin-bottom: 1.25em;
   padding: 1.25em;
-  background: #f2f2f2; }
+  background: rgba(0, 0, 0, 0); }
   .panel > :first-child {
     margin-top: 0; }
   .panel > :last-child {
