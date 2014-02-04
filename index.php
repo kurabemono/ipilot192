@@ -25,6 +25,21 @@
 
   <!-- End Nav -->
 
+<div class="row">
+  <div class="large-12 columns">
+    <!-- Desktop Slider -->
+
+    <div class="hide-for-small">
+      <div id="featured"><img alt="slide image" src="./img/slider.jpg"></div>
+    </div><!-- End Desktop Slider -->
+    <!-- Mobile Header -->
+
+    <div class="row">
+      <div class="small-12 show-for-small"><br>
+      <img src="./img/img/workspace_files/1000x600&text=For Small Screens"></div>
+    </div><!-- End Mobile Header -->
+  </div>
+</div><br>
 
   <!-- Main Page Content and Sidebar -->
 
