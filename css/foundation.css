@@ -25,7 +25,6 @@ body {
 <<<<<<< HEAD
 =======
   background: white;
->>>>>>> 1166d63ca3f0595572e57adb44e0e24fd768ab24
   color: #222222;
   padding: 0;
   margin: 0;
@@ -1328,7 +1327,7 @@ button, .button {
   font-family: inherit;
   font-weight: bold;
   line-height: normal;
-  margin: 0 0 1.25em;
+  margin: 10px 0px 10px 0px;
   position: relative;
   text-decoration: none;
   text-align: center;
@@ -1775,7 +1774,7 @@ fieldset {
   margin: 1.125em 0; }
   fieldset legend {
     font-weight: bold;
-    background: white;
+    background: rgba(0,0,0,0);
     padding: 0 0.1875em;
     margin: 0;
     margin-left: -0.1875em; }
@@ -4165,11 +4164,11 @@ ul.pagination {
 /* Panels */
 .panel {
   border-style: solid;
-  border-width: 1px;
-  border-color: #d9d9d9;
+  border-width: 0px;
+  background: rgba(0,0,0,0);
   margin-bottom: 1.25em;
   padding: 1.25em;
-  background: #f2f2f2; }
+  background: rgba(0,0,0,0); }
   .panel > :first-child {
     margin-top: 0; }
   .panel > :last-child {
