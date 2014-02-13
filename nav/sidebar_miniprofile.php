@@ -59,7 +59,7 @@ else {
 			<input type=\"password\" name=\"password\" placeholder=\"Password\" />
 		</div>
 	</div>
-	<input type=\"submit\" value=\"Login\" class=\"small button\">
+	<input type=\"submit\" value=\"Login\" class=\"small button\"/>
 	</div>
 	</form>";
 }

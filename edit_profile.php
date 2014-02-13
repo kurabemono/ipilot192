@@ -42,7 +42,7 @@
 			$query = "SELECT * FROM users WHERE username = \"" . $username . "\"";
 			if ($stmt = mysqli_prepare($con, $query)) {
 				mysqli_stmt_execute($stmt);
-				mysqli_stmt_bind_result($stmt, $uid, $uname, $password, $fullname, $studentno, $batch, $mobilenumber, $email, $address, $workplace, $wposition, $wstarted, $waddress);
+				mysqli_stmt_bind_result($stmt, $uid, $uname, $password, $fullname, $studentnumber, $batch, $mobilenumber, $email, $address, $workplace, $wposition, $wstarted, $waddress);
 				mysqli_stmt_fetch($stmt);
 			}
 		}
@@ -52,7 +52,7 @@
 			echo "<script type=\"text/javascript\">document.location.href=\"" . $url . "\";</script>";
 		}
 	?>
-		<form action="" method="post">
+		<form action="submit_profile.php" method="post">
 		  <fieldset>
 
 			<legend>Basic Info</legend>
@@ -60,39 +60,39 @@
 			<label>Name</label>
 			<div class="row">
 				<div class="large-4 columns">
-					<input type="text" placeholder="Given Name" value="<?php echo $fullname ?>"/>
+					<input type="text" name="fullname" placeholder="Given Name" value="<?php echo $fullname ?>"/>
 				</div>
 				<div class="large-4 columns">
-					<input type="text" placeholder="Middle Name" />
+					<input type="text" name="middlename" placeholder="Middle Name" />
 				</div>
 				<div class="large-4 columns">
-					<input type="text" placeholder="Family Name" />
+					<input type="text" name="familyname" placeholder="Family Name" />
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="large-2 columns">
 					<label>Batch</label>
-					<input type="text" placeholder="ex. 2010" value="<?php echo $batch ?>" />
+					<input type="text" name="batch" placeholder="ex. 2010" value="<?php echo $batch ?>" />
 				</div>
 				<div class="large-3 columns">
 					<label>Mobile Number</label>
-					<input type="text" placeholder="ex. 09171234567" value="<?php echo $mobilenumber ?>" />
+					<input type="text" name="mobilenumber" placeholder="ex. 09171234567" value="<?php echo $mobilenumber ?>" />
 				</div>
 				<div class="large-7 columns">
 					<label>E-mail Address</label>
-					<input type="text" placeholder="ex. liL_mhalDitA@yahoo.com" value="<?php echo $email ?>" />
+					<input type="text" name="email" placeholder="ex. liL_mhalDitA@yahoo.com" value="<?php echo $email ?>" />
 				</div>
 			</div>
 			<label>Student #</label>
 			<div class="row">
 				<div class="large-3 columns">
-					<input type="text" placeholder="ex. 2009-01234" value="<?php echo $studentno ?>" />
+					<input type="text" name="studentnumber" placeholder="ex. 2009-01234" value="<?php echo $studentnumber ?>" />
 				</div>
 			</div>
 
 			<label>Address</label>
-			<input type="text" value="<?php echo $address ?>"/>
+			<input type="text" name="address" value="<?php echo $address ?>"/>
 
 		  </fieldset>
 		  
@@ -103,14 +103,14 @@
 			<label>Company Name</label>
 			<div class="row">
 				<div class="large-12 columns">
-					<input type="text" placeholder="ex. Google, Samsung, UP, etc." value="<?php echo $workplace ?>" />
+					<input type="text" name="workplace" placeholder="ex. Google, Samsung, UP, etc." value="<?php echo $workplace ?>" />
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="large-4 columns">
 					<label>Position</label>
-					<input type="text" placeholder="ex. Programmer, QC, etc." value="<?php echo $wposition ?>" />
+					<input type="text" name="wposition" placeholder="ex. Programmer, QC, etc." value="<?php echo $wposition ?>" />
 				</div>
 				<div class="large-7 columns">
 					
@@ -119,22 +119,17 @@
 			<label>Employee since</label>
 			<div class="row">
 				<div class="large-2 columns">
-					<input type="text" placeholder="ex. 2007" value="<?php echo $wstarted ?>" />
+					<input type="text" name="wstarted" placeholder="ex. 2007" value="<?php echo $wstarted ?>" />
 				</div>
 			</div>
 
 			<label>Company Address</label>
-			<input type="text" value="<?php echo $waddress ?>" />
+			<input type="text" name="waddress" value="<?php echo $waddress ?>" />
 
 		  </fieldset>
+		  <input type="submit" value="Save"/ class="small button">
+		  <a href="profile.php" class="small button">Cancel</a>
 		</form>
-		
-		<a href="profile.php" class="button">Save</a>
-		<a href="profile.php" class="button">Cancel</a>
-		
-		
-      
-		
     </div>
 
     <!-- End Main Content -->

@@ -155,7 +155,7 @@
 				</div>
 		</div>
 	  </fieldset>
-	  <a href="edit_profile.php" class="button">Edit</a>
+	  <a href="edit_profile.php" class="small button">Edit</a>
 		
 		
       
