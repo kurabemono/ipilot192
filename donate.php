@@ -3,6 +3,26 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
+<?php
+if (isset($_POST['amount'])) {
+	$con = mysqli_connect("localhost","root", "","ipilot");
+	if (mysqli_connect_errno($con)) {
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+	$amount = $_POST['amount'];
+	
+	$query = sprintf("INSERT INTO `ipilot`.`donations` (`id`, `date`, `amount`, `receipt`, `userid`) VALUES (NULL, CURRENT_DATE(), '%s', SHA1('%s'), '0');", mysqli_real_escape_string($con, $amount), date(DateTime::RFC822));
+	if ($stmt = mysqli_prepare($con, $query)) {
+		$s = mysqli_stmt_execute($stmt);
+		if (!$s) {
+			echo "EDIT FAILURE";
+		}
+	}
+	$donationsuccessful = 1;
+}
+
+?>
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
@@ -32,24 +52,32 @@
 
     <!-- Main Blog Content -->
     <div class="large-9 columns">
-
-      <form>
-		  <fieldset>
-
-			<legend>Donation</legend>
-
-			<label>Amount</label>
-			<div class="row">
-				<div class="large-4 columns">
-					<input type="text" placeholder="ex. 2000" />
-				</div>
+		
+		<?php
+		if (isset($donationsuccessful)) {
+			echo "<div data-alert class=\"alert-box success\">
+		  Donation Successful! Thank you.
+		  <a href=\"#\" class=\"close\">&times;</a>
+		</div>";
+			unset($donationsuccessful);
+			}
+		?>
+		<form action="paypel.php" method="post">
+		<fieldset>
+		<legend>Donation</legend>
+		
+		<label>Amount</label>
+		<div class="row">
+			<div class="large-4 columns">
+				<input type="text" name="donationamount" placeholder="ex. 2000, 10000" />
 			</div>
+		</div>
 
-		  </fieldset>
+		</fieldset>
+		<input type="submit" value="Donate" class="small button"/>
 		</form>
 		
-		<a href="#" class="button">Donate</a>
-		<i>Note: This will take you to the Paypal website to complete your transaction</i>
+		<i>Note: This will take you to the Paypel website to complete your transaction</i>
 
     </div>
 

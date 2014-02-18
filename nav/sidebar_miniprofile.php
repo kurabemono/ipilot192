@@ -15,12 +15,7 @@ if (isset($_COOKIE["user"])) {
 	echo "<div align=\"center\">
 	<img src=\"http://placehold.it/150x150&text=" . $uname . "\" /><br>
 	<b><a href=\"profile.php\" align=\"right\">" . $fullname ."</a></b>
-  </div>
-  
-  <ul class=\"side-nav\" align=\"right\">
-	<li><a href=\"edit_profile.php\">Edit Profile</a></li>
-	<li><a href=\"logout.php\">Logout</a></li>
-  </ul>";
+  </div>";
 }
 else {
 	echo "<div class=\"panel\"><form action=\"authenticate.php\" method=\"post\">
@@ -56,10 +51,14 @@ else {
 	</div>
 	<div class=\"row\">
 		<div class=\"large-12 columns\">
-			<input type=\"password\" name=\"password\" placeholder=\"Password\" />
+			<input type=\"password\" name=\"password\" placeholder=\"Password\" align=\"right\"/>
 		</div>
 	</div>
-	<input type=\"submit\" value=\"Login\" class=\"small button\"/>
+	<div class=\"row\">
+		<div class=\"large-6 columns\"></div>
+		<div class=\"large-6 columns\">
+			<input type=\"submit\" value=\"Login\" class=\"small button\"/>
+		</div>
 	</div>
 	</form>";
 }

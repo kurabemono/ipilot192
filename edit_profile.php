@@ -44,6 +44,18 @@
 				mysqli_stmt_execute($stmt);
 				mysqli_stmt_bind_result($stmt, $uid, $uname, $password, $fullname, $studentnumber, $batch, $mobilenumber, $email, $address, $workplace, $wposition, $wstarted, $waddress);
 				mysqli_stmt_fetch($stmt);
+				
+				$fullname = htmlspecialchars($fullname);
+				$studentnumber = htmlspecialchars($studentnumber);
+				$batch = htmlspecialchars($batch);
+				$mobilenumber = htmlspecialchars($mobilenumber);
+				$email = htmlspecialchars($email);
+				$address = htmlspecialchars($address);
+				$workplace = htmlspecialchars($workplace);
+				$wposition = htmlspecialchars($wposition);
+				$wstarted = htmlspecialchars($wstarted);
+				$waddress = htmlspecialchars($waddress);
+				
 			}
 		}
 		else {
@@ -103,7 +115,7 @@
 			<label>Company Name</label>
 			<div class="row">
 				<div class="large-12 columns">
-					<input type="text" name="workplace" placeholder="ex. Google, Samsung, UP, etc." value="<?php echo $workplace ?>" />
+					<input type="text" name="workplace" placeholder="ex. Google, Samsung, UP, etc." value="<?php echo $workplace; ?>" />
 				</div>
 			</div>
 			

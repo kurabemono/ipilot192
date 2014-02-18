@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+$donationamount = $_POST['donationamount'];
+?>
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -20,49 +23,42 @@
 <!-- Nav Bar -->
 
   <?php
-	include 'nav/header.php';
+	#include 'nav/header.php';
   ?>
 
   <!-- End Nav -->
-
 
   <!-- Main Page Content and Sidebar -->
 
   <div class="row">
 
     <!-- Main Blog Content -->
-    <div class="large-9 columns">
-		<h2>Unvalidated Donations</h2>
-		<div class="row">
-		<table>
-		  <thead>
-			<tr>
-				<th>Date</th>
-				<th width="200">Amount (PHP)</th>
-				<th>Receipt</th>
-				<th width="100">Validate</th>
-			</tr>
-		  </thead>
-		  <tbody>
-		  <?php
-			$con = mysqli_connect("localhost","root", "","ipilot");
-				if (mysqli_connect_errno($con)) {
-					echo "Failed to connect to MySQL: " . mysqli_connect_error();
-				}
-			$result = mysqli_query($con, "SELECT * FROM donations WHERE userid = 0 ORDER BY date DESC");
-			while ($row = mysqli_fetch_array($result)) {
-				echo "<tr>";
-				echo "<td>" . $row['date'] . "</td>";
-				echo "<td>" . $row['amount'] . "</td>";
-				echo "<td><code>" . $row['receipt'] . "</code></td>";
-				echo "<td><a href=\"#\" class=\"tiny button\">Validate</a></td>";
-				echo "</tr>";
-			}
-		  ?>
-		  </tbody>
-		</table>
-		</div>
-  </div>
+    <div class="large-9 columns" role="content">
+		<h2>Paypel貝飽</h2>
+		<form action="donate.php" method="post">
+		  <fieldset>
+
+			<legend>Donate</legend>
+			
+			<div class="row">
+				<div class="large-2 columns">
+					<label>Amount</label>
+					<input type="text" name="amount" value="<?php echo $donationamount; ?>" readonly/>
+				</div>
+			</div>
+			
+			<label>Credit Card Number</label>
+			<div class="row">
+				<div class="large-4 columns">
+					<input type="text" name="creditcardnumber" placeholder="xxxx-xxxx-xxxx-xxxx" value=""/>
+				</div>
+			</div>
+			
+		  </fieldset>
+		  <input type="submit" value="捐贈"/ class="button"/>
+		  <a href="donate.php" class="button">取消</a>
+		</form>
+    </div>
 
     <!-- End Main Content -->
 
@@ -71,20 +67,7 @@
 
     <aside class="large-3 columns">
 	
-	  <?php
-		include 'nav/sidebar_miniprofile.php';
-	  ?>
-
-      <div class="panel">
-        <h5>2013 Sept. Top Donors</h5>
-        <ol>
-		  <li><b>Joshua Nidea</b><br>P50,000</li>
-		  <li><b>Joshua Martin Villano</b><br>P30,000</li>
-		  <li><b>Dion Melosantos</b><br>P15,000</li>
-
-		</ol>
-        <a href="#">More &rarr;</a>
-      </div>
+	  <h3>Pay with Paypel!</h3>
 
     </aside>
 
@@ -97,7 +80,7 @@
   <!-- Footer -->
 
   <?php
-	include 'nav/footer.php';
+	#include 'nav/footer.php';
   ?>
 
   <script>

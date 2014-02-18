@@ -37,9 +37,10 @@
 		<table>
 		  <thead>
 			<tr>
-			  <th width="200">Amount (PHP)</th>
-			  <th>Receipt</th>
-			  <th width="100">Validated</th>
+				<th>Date</th>
+				<th width="100">Amount (PHP)</th>
+				<th>Receipt</th>
+				<th width="100">Validated</th>
 			</tr>
 		  </thead>
 		  <tbody>
@@ -51,9 +52,10 @@
 			$result = mysqli_query($con, "SELECT * FROM donations ORDER BY date DESC");
 			while ($row = mysqli_fetch_array($result)) {
 				echo "<tr>";
+				echo "<td>" . $row['date'] . "</td>";
 				echo "<td>" . $row['amount'] . "</td>";
 				echo "<td><code>" . $row['receipt'] . "</code></td>";
-				if ($row['validated']) {
+				if ($row['userid'] != 0) {
 					echo "<td><a href=\"#\" class=\"tiny button success\">Validated</a></td>";
 				}
 				else {

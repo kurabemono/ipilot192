@@ -42,8 +42,19 @@
 			$query = "SELECT * FROM users WHERE username = \"" . $username . "\"";
 			if ($stmt = mysqli_prepare($con, $query)) {
 				mysqli_stmt_execute($stmt);
-				mysqli_stmt_bind_result($stmt, $uid, $uname, $password, $fullname, $studentno, $batch, $mobilenumber, $email, $address, $work, $wposition, $wstarted, $waddress);
+				mysqli_stmt_bind_result($stmt, $uid, $uname, $password, $fullname, $studentnumber, $batch, $mobilenumber, $email, $address, $workplace, $wposition, $wstarted, $waddress);
 				mysqli_stmt_fetch($stmt);
+				
+				$fullname = htmlspecialchars($fullname);
+				$studentnumber = htmlspecialchars($studentnumber);
+				$batch = htmlspecialchars($batch);
+				$mobilenumber = htmlspecialchars($mobilenumber);
+				$email = htmlspecialchars($email);
+				$address = htmlspecialchars($address);
+				$workplace = htmlspecialchars($workplace);
+				$wposition = htmlspecialchars($wposition);
+				$wstarted = htmlspecialchars($wstarted);
+				$waddress = htmlspecialchars($waddress);
 			}
 		}
 		else {
@@ -69,7 +80,7 @@
 					<label class="right inline">Student #</label>
 				</div>
 				<div class="large-4 columns">
-					<h5><?php echo $studentno; ?></h5>
+					<h5><?php echo $studentnumber; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>
@@ -121,7 +132,7 @@
 					<label class="right inline">Company Name</label>
 				</div>
 				<div class="large-4 columns">
-					<h5><?php echo $work; ?></h5>
+					<h5><?php echo $workplace; ?></h5>
 				</div>
 				<div class="large-5 columns">
 				</div>

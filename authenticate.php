@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$username = $_POST["username"];
+	$username = htmlspecialchars($_POST["username"]);
 	$password = SHA1($_POST["password"]);
 	
 	$con = mysqli_connect("localhost","root", "","ipilot");
